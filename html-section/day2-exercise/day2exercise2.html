@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Tables</title>
+    <style>
+      table {
+        width: 60%;
+        margin: 10vh auto;
+        text-align: center;
+        color: #000;
+      }
+
+      table,
+      th,
+      td {
+        /* border: 1px solid black; */
+        border-collapse: collapse;
+      }
+
+      th {
+        background-color: #000;
+        color: #fff;
+      }
+
+      th,
+      td {
+        padding: 10px;
+      }
+
+      tr {
+        background-color: #fff;
+      }
+
+      tr:nth-child(even) {
+        background-color: #eee;
+      }
+
+      tr:hover {
+        background-color: #888;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <table cellspacing="5">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Middle Name</th>
+          <th>Last Name</th>
+          <th>E-Mail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row">Robert</td>
+          <td>Orton</td>
+          <td>Hilton</td>
+          <td>RobertOHilton@rhyta.com</td>
+        </tr>
+        <tr>
+          <td scope="row">Allyson</td>
+          <td>Rogers</td>
+          <td>Hill</td>
+          <td>AllysonRHill@rhyta.com</td>
+        </tr>
+        <tr>
+          <td scope="row">Chad</td>
+          <td>Anderson</td>
+          <td>Swader</td>
+          <td>ChadASwader@dayrep.com</td>
+        </tr>
+        <tr>
+          <td scope="row">Sylvie</td>
+          <td>Edwards</td>
+          <td>Alston</td>
+          <td>SylvieEAlston@teleworm.us</td>
+        </tr>
+        <tr>
+          <td scope="row">Rita</td>
+          <td>Reed</td>
+          <td>Woods</td>
+          <td>RitaRWoods@jourrapide.com</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
