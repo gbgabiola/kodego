@@ -1,0 +1,29 @@
+
+12-week Full-stack Web Development Course
+Start with the basics and build up real-world projects that will make you a valuable asset to any tech company. Learn full-stack web development with latest technology and industry best practices.
+
+
+< Display the LOGOS HERE  HTML, CSS, JAVASCRIPT with LINK>
+
+WEB DEVELOPMENT ESSENTIALS
+< use Ordered List tags and put hypertext link>
+ Intro to Web Development
+ Command Line Interface
+ Basics of Programming
+ HTML and CSS Fundamentals
+ Responsive Web Design
+ Bootstrap CSS Framework
+ Version Control with Git and Github
+
+
+Activities
+< use Unordered List tags and put hypertext link>
+ Code-Along
+ Quizes and Games
+ Pair Programming
+ Peer Review
+ Code Relay
+ Coding Challenges
+ Project Presentation
+
+< Embed the map of Globe Telecom office in Mandaluyong > 
