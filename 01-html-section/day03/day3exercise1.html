@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Page Layout</title>
+    <style>
+      body {
+        background-color: #000;
+        color: #5fe2d1;
+      }
+      .div-container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .div-header,
+      .div-nav,
+      .div-index,
+      .div-content,
+      .div-footer {
+        border: 1px solid #5fe2d1;
+        padding: 20px 50px;
+      }
+
+      .div-index {
+        width: 20%;
+        float: left;
+      }
+
+      .div-index,
+      .div-content {
+        min-height: 200px;
+        box-sizing: border-box;
+      }
+
+      /* .clear:after {
+        content: '';
+        clear: both;
+      } */
+
+      table {
+        margin: 10vh auto;
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: 20px 50px;
+        border: 1px solid #5fe2d1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div-container">
+      <!-- Div Layout -->
+      <div class="div-header">Header Section</div>
+      <div class="div-nav">Navigation Bar</div>
+      <div>
+        <div class="div-index">Index</div>
+        <div class="div-content">Content section</div>
+      </div>
+      <div class="div-footer">Footer Section</div>
+
+      <!-- Table Layout -->
+      <table>
+        <tr>
+          <td colspan="2">Header Section</td>
+        </tr>
+        <tr>
+          <td colspan="2">Navigation Bar</td>
+        </tr>
+        <tr style="height: 200px">
+          <td style="width: 20%">Index</td>
+          <td>Content section</td>
+        </tr>
+        <tr>
+          <td colspan="2">Footer Section</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
