@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Gallery</title>
+    <style>
+      h1 {
+        text-transform: uppercase;
+        text-align: center;
+        margin-top: 5rem;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        justify-content: center;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        margin: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+      }
+
+      .card:hover .card__img {
+        filter: contrast(100%);
+      }
+
+      .card__img {
+        filter: contrast(75%);
+        transition: filter 0.7s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+      }
+
+      .card .card__text {
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 769px) {
+        .card {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Travel Gallery</h1>
+    </header>
+
+    <main class="cards">
+      <div class="card">
+        <div class="card__img">
+          <img
+            src="https://images.unsplash.com/photo-1552353617-3bfd679b3bdd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+            alt=""
+          />
+        </div>
+        <div class="card__text">
+          <p>Add a description of the image here</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__img">
+          <img
+            src="https://images.unsplash.com/photo-1541828985935-1fe979f9fc0b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+            alt=""
+          />
+        </div>
+        <div class="card__text">
+          <p>Add a description of the image here</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__img">
+          <img
+            src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+            alt=""
+          />
+        </div>
+        <div class="card__text">
+          <p>Add a description of the image here</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__img">
+          <img
+            src="https://images.unsplash.com/photo-1561562176-d1d598e49589?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80"
+            alt=""
+          />
+        </div>
+        <div class="card__text">
+          <p>Add a description of the image here</p>
+        </div>
+      </div>
+    </main>
+    <!-- .cards -->
+  </body>
+</html>
