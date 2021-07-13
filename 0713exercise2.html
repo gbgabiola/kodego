@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Magazine</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: lightgreen;
+        text-align: center;
+        padding: 3rem;
+      }
+
+      nav ul {
+        background-color: #333;
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        padding: 1.5rem 0;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #fff;
+        padding: 1.5rem;
+      }
+
+      nav ul li:hover {
+        background-color: #777;
+      }
+
+      main {
+        display: flex;
+      }
+
+      .box {
+        border: 1px solid #0f0;
+        padding: 3% 2%;
+      }
+
+      .box h2 {
+        padding-bottom: 1.5rem;
+      }
+
+      footer {
+        background-color: #eee;
+        text-align: center;
+        padding: 2%;
+      }
+
+      @media (max-width: 767px) {
+        main {
+          display: block;
+        }
+
+        main h2 {
+          text-align: center;
+        }
+
+        nav ul {
+          display: block;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Online Magazine</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <main class="boxes">
+      <section class="box">
+        <h2>Lifestyle</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur perspiciatis ipsum tempora sequi porro
+          voluptates.
+        </p>
+      </section>
+      <section class="box">
+        <h2>Business</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur perspiciatis ipsum tempora sequi porro
+          voluptates.
+        </p>
+      </section>
+      <section class="box">
+        <h2>Sports</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur perspiciatis ipsum tempora sequi porro
+          voluptates.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Copyright. All right reserved.</p>
+    </footer>
+  </body>
+</html>
