@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avocado Layout 3</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      header,
+      footer {
+        background-color: yellowgreen;
+        height: 20vh;
+      }
+
+      main {
+        display: flex;
+        height: 60vh;
+      }
+
+      article {
+        flex: 3;
+      }
+
+      aside,
+      nav {
+        flex: 1;
+      }
+
+      aside {
+        background-color: beige;
+      }
+
+      nav {
+        background-color: #d8e7d6;
+      }
+
+      header,
+      footer,
+      article,
+      aside,
+      nav {
+        padding: 1.5rem;
+      }
+
+      .container {
+        padding: 2rem 2rem 1rem 2rem;
+        display: flex;
+      }
+
+      form {
+        background-color: beige;
+        border-radius: 10px;
+      }
+
+      .form-control {
+        display: flex;
+        width: 90%;
+      }
+
+      .form-control input,
+      .form-control select,
+      .form-control label {
+        padding: 0.5rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .form-control input,
+      .form-control select {
+        flex-basis: 100%;
+      }
+
+      .form-control label {
+        margin-right: 0.5rem;
+      }
+
+      .left {
+        flex: 2;
+      }
+      .right {
+        flex: 1;
+      }
+
+      form input[type='radio'],
+      form input[type='checkbox'],
+      form p {
+        margin-bottom: 0.8rem;
+      }
+
+      .vehicle,
+      .extras {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+      }
+
+      .btn-wrapper {
+        display: flex;
+      }
+
+      .btn {
+        background-color: #818081;
+        color: #fff;
+        border: 0;
+        padding: 0.8rem 1.2rem;
+        margin: 1rem auto;
+        border-radius: 5px;
+      }
+
+      .btn:hover {
+        background-color: yellowgreen;
+        color: #000;
+        transition: all 0.5s ease-in-out;
+      }
+
+      @media (max-width: 1024px) {
+        header,
+        footer {
+          height: 15vh;
+        }
+        main {
+          height: 70vh;
+        }
+
+        .container {
+          flex-direction: column;
+        }
+
+        .form-control {
+          width: 100%;
+        }
+
+        .right {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        main {
+          flex-direction: column;
+          height: 100vh;
+        }
+
+        .container {
+          flex-direction: column;
+        }
+
+        header,
+        footer {
+          height: 10vh;
+        }
+
+        .right {
+          display: flex;
+          justify-content: space-around;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>Header</header>
+    <main>
+      <article>
+        <form action="">
+          <div class="container">
+            <div class="left">
+              <div class="form-control">
+                <label for="name">Name </label>
+                <input type="text" id="name" name="name" />
+              </div>
+              <div class="form-control">
+                <label for="phone">Phone </label>
+                <input type="text" id="phone" name="phone" />
+              </div>
+              <div class="form-control">
+                <label for="email">Email </label>
+                <input type="email" id="email" name="email" />
+              </div>
+              <div class="form-control">
+                <label for="pickUpDate">Pickup&nbsp;Date&nbsp;Time </label>
+                <input type="datetime-local" id="pickUpDate" name="pickUpDate" />
+              </div>
+              <div class="form-control">
+                <label for="pickUpPlace"> Pickup&nbsp;Place </label>
+                <select name="pickUpPlace" id="pickUpPlace">
+                  <option value disabled selected>Select One</option>
+                  <option value="luzon">Luzon</option>
+                  <option value="visayas">Visayas</option>
+                  <option value="mindanao">Mindanao</option>
+                </select>
+              </div>
+              <div class="form-control">
+                <label for="dropoffPlace">Dropoff&nbsp;Place </label>
+                <input type="text" id="dropoffPlace" name="dropoffPlace" />
+              </div>
+            </div>
+            <!-- .left -->
+
+            <div class="right">
+              <div class="vehicle">
+                <p>Which vehicle do you require?</p>
+                <div class="vehicle__item">
+                  <label for="van"> <input type="radio" name="vehicle" id="van" value="van" /> Van </label>
+                </div>
+                <div class="vehicle__item">
+                  <label for="jeepney">
+                    <input type="radio" name="vehicle" id="jeepney" value="jeepney" /> Jeepney
+                  </label>
+                </div>
+                <div class="vehicle__item">
+                  <label for="trycicle">
+                    <input type="radio" name="vehicle" id="trycicle" value="trycicle" /> Tricycle
+                  </label>
+                </div>
+              </div>
+              <!-- .vehicle -->
+
+              <div class="extras">
+                <p>Extras</p>
+                <div class="extras__item">
+                  <label for="baby"> <input type="checkbox" name="extra" id="baby" value="baby" /> Baby Seat </label>
+                </div>
+                <div class="extras__item">
+                  <label for="wheelchair">
+                    <input type="checkbox" name="extra" id="wheelchair" value="wheelchair" /> Wheelchair Access
+                  </label>
+                </div>
+                <div class="extras__item">
+                  <label for="stock"> <input type="checkbox" name="extra" id="stock" value="stock" /> Stock Tip </label>
+                </div>
+              </div>
+              <!-- .extras -->
+            </div>
+            <!-- .right -->
+          </div>
+          <!-- .container -->
+
+          <div class="btn-wrapper">
+            <button class="btn">Submit Booking</button>
+          </div>
+        </form>
+      </article>
+      <aside>Aside</aside>
+      <nav>Nav</nav>
+    </main>
+    <footer>Footer</footer>
+  </body>
+</html>
