@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: grid;
+        grid-template-columns: 20% 1fr 15%;
+        grid-template-rows: 10vh 1fr 10vh;
+        grid-template-areas:
+          'header header header'
+          'nav article aside'
+          'footer footer footer';
+        /* gap: 5px; */
+        height: 100vh;
+        text-align: center;
+        background-color: lightyellow;
+      }
+
+      header,
+      footer {
+        background-color: yellowgreen;
+      }
+
+      header {
+        grid-area: header;
+      }
+
+      nav {
+        background-color: #d8e7d6;
+        grid-area: nav;
+      }
+
+      article {
+        grid-area: article;
+      }
+
+      aside {
+        grid-area: aside;
+        background-color: beige;
+      }
+
+      footer {
+        grid-area: footer;
+      }
+
+      header,
+      nav,
+      article,
+      aside,
+      footer {
+        padding: 20px;
+      }
+
+      @media (max-width: 575px) {
+        body {
+          grid-template-areas:
+            'header'
+            'nav'
+            'article'
+            'aside'
+            'footer';
+          grid-template-columns: 1fr;
+          grid-template-rows: 10vh 10vh 1fr 30vh 10vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>Header</header>
+    <nav>Nav</nav>
+    <article>Article</article>
+    <aside>Aside</aside>
+    <footer>Footer</footer>
+  </body>
+</html>
