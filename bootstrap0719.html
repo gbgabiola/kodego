@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Exercise</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-light m-4">
+    <main class="container-fluid">
+      <div class="row g-5">
+        <div class="col-md-5 col-lg-4 order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Your E-CART</span>
+            <span class="badge bg-primary rounded-pill">3</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Product name</h6>
+                <small class="text-muted">Brief description</small>
+              </div>
+              <span class="text-muted">P100</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Second product</h6>
+                <small class="text-muted">Brief description</small>
+              </div>
+              <span class="text-muted">P500</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Third item</h6>
+                <small class="text-muted">Brief description</small>
+              </div>
+              <span class="text-muted">P1000</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">Promo code</h6>
+                <small class="text-muted">EXAMPLECODE</small>
+              </div>
+              <span class="text-muted">-P100</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (Php)</span>
+              <strong>P1500</strong>
+            </li>
+          </ul>
+
+          <form action="" class="card p-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Promo code" />
+              <button type="submit" class="btn btn-secondary">Redeem</button>
+            </div>
+          </form>
+        </div>
+        <!-- .col-md-5.col-md-4 -->
+
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">Billing address</h4>
+          <form action="">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">First name</label>
+                <input type="text" class="form-control" id="firstName" />
+              </div>
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="lastName" />
+              </div>
+
+              <div class="col-12">
+                <label for="username" class="form-label">Username</label>
+                <div class="input-group">
+                  <span class="input-group-text">@</span>
+                  <input type="text" class="form-control" id="username" placeholder="Username" />
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com" />
+              </div>
+
+              <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" />
+              </div>
+
+              <div class="col-12">
+                <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" />
+              </div>
+
+              <div class="col-md-5">
+                <label for="country" class="form-label">Country</label>
+                <select class="form-select" id="country">
+                  <option value="">Choose...</option>
+                  <option>Australia</option>
+                  <option>Canada</option>
+                  <option>China</option>
+                  <option>Germany</option>
+                  <option>Israel</option>
+                  <option>Japan</option>
+                  <option>Korea</option>
+                  <option>Philippines</option>
+                  <option>Singapore</option>
+                  <option>United States of America</option>
+                </select>
+              </div>
+
+              <div class="col-md-4">
+                <label for="state" class="form-label">State</label>
+                <select name="state" id="state" class="form-select">
+                  <option value="">Choose...</option>
+                  <option>Northern Luzon</option>
+                  <option>Cordillera</option>
+                  <option>Central Luzon</option>
+                  <option>Metro Manila</option>
+                  <option>Southern Luzon</option>
+                  <option>Bicol</option>
+                  <option>Western Visayas-Palawan</option>
+                  <option>Central and Eastern Visayas</option>
+                  <option>Zamboanga Peninsula and Northern Mindanao</option>
+                  <option>Davao Region and Central Mindanao</option>
+                  <option>Bangsamoro</option>
+                </select>
+              </div>
+
+              <div class="col-md-3">
+                <label for="zip" class="form-label">Zip</label>
+                <input type="text" id="zip" class="form-control" />
+              </div>
+            </div>
+            <!-- .row -->
+
+            <hr class="my-4" />
+
+            <div class="form-check">
+              <input type="checkbox" id="sameAddress" class="form-check-input" />
+              <label for="sameAddress" class="form-check-label"
+                >Shipping address is the same as my billing address</label
+              >
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" id="saveInfo" class="form-check-input" />
+              <label for="saveInfo" class="form-check-label">Save this information for next time</label>
+            </div>
+
+            <hr class="my-4" />
+
+            <h4 class="mb-3">Payment</h4>
+            <div class="my-3">
+              <div class="form-check">
+                <input type="radio" name="payment-method" id="credit" class="form-check-input" checked />
+                <label for="credit" class="form-check-label">Credit card</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" name="payment-method" id="debit" class="form-check-input" />
+                <label for="debit" class="form-check-label">Debit card</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" name="payment-method" id="paypal" class="form-check-input" />
+                <label for="paypal" class="form-check-label">PayPal</label>
+              </div>
+            </div>
+
+            <div class="row gy-3">
+              <div class="col-md-6">
+                <label for="cardName" class="form-label">Name on card</label>
+                <input type="text" id="cardName" class="form-control" required />
+                <small class="text-muted">Full name as displayed on card</small>
+              </div>
+
+              <div class="col-md-6">
+                <label for="cardNumber" class="form-label">Credit card number</label>
+                <input type="text" id="cardNumber" class="form-control" required />
+              </div>
+
+              <div class="col-md-3">
+                <label for="cardExpiration" class="form-label">Expiration</label>
+                <input type="text" class="form-control" id="cardExpiration" required />
+              </div>
+
+              <div class="col-md-3">
+                <label for="cardCvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cardCvv" required />
+              </div>
+            </div>
+            <!-- .row -->
+
+            <hr class="my-4" />
+
+            <button class="btn btn-primary btn-lg w-100">Continue to checkout</button>
+          </form>
+        </div>
+        <!-- .col-md-7.col-md-8 -->
+      </div>
+      <!-- .row -->
+    </main>
+    <!-- .container-fluid -->
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
