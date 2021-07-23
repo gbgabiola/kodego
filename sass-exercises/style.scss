@@ -1,0 +1,147 @@
+// Variable 1
+$color: #00f;
+$space: 10px;
+
+.wrap p {
+  margin: $space;
+  padding: $space;
+}
+
+.p-border {
+  border: 3px dotted $color;
+}
+
+.p-background {
+  background-color: rgba($color, 0.3);
+}
+
+.p-color {
+  color: $color;
+}
+
+// Variable 2
+$bodyColor: lightblue;
+$primaryColor: darkblue;
+$footer: #ff0;
+$fontStack: Arial, sans-serif;
+
+body {
+  background-color: $bodyColor;
+  font: $fontStack;
+}
+
+header {
+  color: $primaryColor;
+}
+
+// Nesting
+$fillColor: lightgrey;
+$tr-bgColor: lightgreen;
+
+.sample-nest {
+  p {
+    background-color: $fillColor;
+
+    a {
+      display: block;
+      padding: 6px 12px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  table {
+    border: 2px solid $primaryColor;
+    width: 100%;
+
+    tr {
+      &:nth-child(2n) {
+        background-color: $tr-bgColor;
+        padding: 6px;
+      }
+    }
+
+    th {
+      font: $fontStack;
+      color: $primaryColor;
+      font-size: large;
+    }
+  }
+}
+
+// Nesting 2
+nav {
+  ul {
+    list-style: none;
+    margin: 1px;
+    padding: 1px;
+    border: 2px solid lightsalmon;
+    background-color: lightgreen;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  li {
+    float: left;
+    border-right: 2px solid $primaryColor;
+
+    &:hover {
+      background-color: $fillColor;
+    }
+  }
+
+  a {
+    display: block;
+    padding: 8px 10px;
+    text-decoration: underline;
+
+    &:hover {
+      color: coral;
+    }
+  }
+}
+
+// Mixin
+@mixin headline($color, $size) {
+  color: $color;
+  font-size: $size;
+}
+
+.headline-news1 {
+  @include headline(green, 3em);
+}
+
+.headline-news2 {
+  @include headline(blue, 2em);
+}
+
+.headline-news3 {
+  @include headline(red, 2em);
+}
+
+// Mixin 2
+$boxStyle1: 5px, solid, red, 20px;
+$boxStyle2: (
+  bStyle: dotted,
+  bColor: blue,
+  bWidth: medium,
+  bRadius: 20px,
+);
+
+@mixin boxy($bWidth, $bStyle, $bColor, $bRadius) {
+  border-width: $bWidth;
+  border-style: $bStyle;
+  border-color: $bColor;
+  border-radius: $bRadius;
+}
+
+.box1 {
+  @include boxy($boxStyle1...);
+}
+
+.box2 {
+  @include boxy($boxStyle2...);
+}

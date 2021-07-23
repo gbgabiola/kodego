@@ -1,0 +1,114 @@
+.wrap p {
+  margin: 10px;
+  padding: 10px;
+}
+
+.p-border {
+  border: 3px dotted #00f;
+}
+
+.p-background {
+  background-color: rgba(0, 0, 255, 0.3);
+}
+
+.p-color {
+  color: #00f;
+}
+
+body {
+  background-color: lightblue;
+  font: Arial, sans-serif;
+}
+
+header {
+  color: darkblue;
+}
+
+.sample-nest p {
+  background-color: lightgrey;
+}
+
+.sample-nest p a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
+}
+
+.sample-nest p a:hover {
+  text-decoration: underline;
+}
+
+.sample-nest table {
+  border: 2px solid darkblue;
+  width: 100%;
+}
+
+.sample-nest table tr:nth-child(2n) {
+  background-color: lightgreen;
+  padding: 6px;
+}
+
+.sample-nest table th {
+  font: Arial, sans-serif;
+  color: darkblue;
+  font-size: large;
+}
+
+nav ul {
+  list-style: none;
+  margin: 1px;
+  padding: 1px;
+  border: 2px solid lightsalmon;
+  background-color: lightgreen;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+nav li {
+  float: left;
+  border-right: 2px solid darkblue;
+}
+
+nav li:hover {
+  background-color: lightgrey;
+}
+
+nav a {
+  display: block;
+  padding: 8px 10px;
+  text-decoration: underline;
+}
+
+nav a:hover {
+  color: coral;
+}
+
+.headline-news1 {
+  color: green;
+  font-size: 3em;
+}
+
+.headline-news2 {
+  color: blue;
+  font-size: 2em;
+}
+
+.headline-news3 {
+  color: red;
+  font-size: 2em;
+}
+
+.box1 {
+  border-width: 5px;
+  border-style: solid;
+  border-color: red;
+  border-radius: 20px;
+}
+
+.box2 {
+  border-width: medium;
+  border-style: dotted;
+  border-color: blue;
+  border-radius: 20px;
+}
