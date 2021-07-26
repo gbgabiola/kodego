@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+  </head>
+  <body>
+    <script>
+      const operator = prompt('Enter Math Operator you want to use: ');
+      const num1 = Number(prompt('Enter first number: '));
+      const num2 = Number(prompt('Enter second number: '));
+      let result;
+
+      switch (operator) {
+        case '+':
+          result = add(num1, num2);
+          messageOutput('sum');
+          break;
+        case '-':
+          result = subtract(num1, num2);
+          messageOutput('difference');
+          break;
+        case '*':
+          result = multiply(num1, num2);
+          messageOutput('product');
+          break;
+        case '/':
+          result = divide(num1, num2);
+          messageOutput('quotient');
+          break;
+        default:
+          document.write(`<h2>Invalid Math operator, please choose either (+, -, * or /).</h2>`);
+      }
+
+      // Operation functions
+      function add(num1, num2) {
+        return num1 + num2;
+      }
+
+      function subtract(num1, num2) {
+        return num1 - num2;
+      }
+
+      function multiply(num1, num2) {
+        return num1 * num2;
+      }
+
+      function divide(num1, num2) {
+        return num1 / num2;
+      }
+
+      // Message output function
+      function messageOutput(operationResult) {
+        return document.write(`<h2>The ${operationResult} is: ${result}</h2>`);
+      }
+    </script>
+  </body>
+</html>
