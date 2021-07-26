@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Activity</title>
+  </head>
+  <body>
+    <h1>My First JavaScript</h1>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+      // let question = 'What is your name?';
+      // let response = prompt(question);
+      // alert('Hello ' + response + '! Enjoy learning.');
+
+      let person = 'Jose Rizal',
+        age = 30,
+        birthPlace = 'Laguna';
+      // document.write('<h2><strong>' + person + ' ' + age + ' ' + birthPlace + '</strong></h2>');
+      // document.write(`<ul><li>${person}</li><li>${age}</li><li>${birthPlace}</li></ul>`);
+
+      // document.write(`
+      //   <h2>Name: ${person}</h2>
+      //   <h2>Age: ${age}</h2>
+      //   <h2>Birthplace: ${birthPlace}</h2>
+      // `);
+
+      let city = 'Manila';
+      function showCity() {
+        let city = 'Malabon';
+        console.log(city);
+      }
+      // showCity();
+      // console.log(city);
+
+      // CONSTANT
+      const car = {
+        type: 'Honda',
+        model: 'SUV',
+        color: 'black',
+      };
+      car.owner = 'Genesis';
+      // console.log(car);
+      // console.log(car.owner);
+      // document.write(`${car.type} car owner is ${car.owner}`);
+
+      // const hourOfDay = 11;
+      // const hourOfDay = prompt('Enter hour of day: ');
+      // let greeting;
+      // if (hourOfDay > 4 && hourOfDay < 12) {
+      //   greeting = 'Good Morning!';
+      // } else if (hourOfDay >= 12 && hourOfDay < 16) {
+      //   greeting = 'Good Afternoon!';
+      // } else if (hourOfDay >= 16 && hourOfDay < 24) {
+      //   greeting = 'Good Evening!';
+      // } else if (hourOfDay >= 1 && hourOfDay <= 4) {
+      //   greeting = 'Good Mornight!';
+      // } else {
+      //   greeting = 'Invalid Input! Please enter a valid hour of day.';
+      // }
+      // alert(greeting);
+
+      let animal = prompt('Enter animal: ');
+      switch (animal) {
+        case 'cow':
+        case 'dog':
+        case 'cat':
+        case 'pig':
+          alert('This animal is not extinct.');
+          break;
+        case 'dinosaur':
+          alert('This animal is extinct.');
+          break;
+        default:
+          alert('Enter a valid animal.');
+      }
+    </script>
+  </body>
+</html>
