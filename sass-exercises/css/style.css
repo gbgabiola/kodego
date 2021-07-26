@@ -27,27 +27,22 @@ header {
 .sample-nest p {
   background-color: lightgrey;
 }
-
 .sample-nest p a {
   display: block;
   padding: 6px 12px;
   text-decoration: none;
 }
-
 .sample-nest p a:hover {
   text-decoration: underline;
 }
-
 .sample-nest table {
   border: 2px solid darkblue;
   width: 100%;
 }
-
 .sample-nest table tr:nth-child(2n) {
   background-color: lightgreen;
   padding: 6px;
 }
-
 .sample-nest table th {
   font: Arial, sans-serif;
   color: darkblue;
@@ -64,22 +59,18 @@ nav ul {
   bottom: 0;
   width: 100%;
 }
-
 nav li {
   float: left;
   border-right: 2px solid darkblue;
 }
-
 nav li:hover {
   background-color: lightgrey;
 }
-
 nav a {
   display: block;
   padding: 8px 10px;
   text-decoration: underline;
 }
-
 nav a:hover {
   color: coral;
 }
@@ -111,4 +102,30 @@ nav a:hover {
   border-style: dotted;
   border-color: blue;
   border-radius: 20px;
+}
+
+.box-heavy {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  border: 6px solid #000;
+}
+
+.box-medium {
+  width: 150px;
+  height: 150px;
+  background-color: teal;
+  border: 3px solid #000;
+}
+
+.coloring.pinky {
+  background-color: pink;
+}
+
+.coloring.redy {
+  background-color: red;
+}
+
+.coloring.orangey {
+  background-color: orange;
 }
