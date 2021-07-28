@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bonggacious Calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .container {
+        width: 300px;
+        padding-bottom: 15px;
+        border-radius: 10px;
+        background-color: #000;
+        color: #fff;
+        box-shadow: 7px 7px 7px -4px rgba(0, 0, 0, 0.7);
+      }
+
+      .display {
+        width: 100%;
+        height: 80px;
+        padding: 0.6rem;
+        font-size: 2rem;
+        text-align: right;
+        border: none;
+        color: #fff;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      button {
+        background-color: #333;
+        color: #fff;
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        margin: 10px;
+        transition: all 0.3s linear;
+      }
+
+      button:hover {
+        cursor: pointer;
+        background-color: #fa8911;
+        color: #fff;
+      }
+
+      .operator {
+        background-color: #fa8911;
+        color: #fff;
+      }
+
+      .operator:hover {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .block {
+        width: 100%;
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" class="display" value="" disabled />
+
+      <div class="buttons">
+        <div class="row">
+          <button value="7">7</button>
+          <button value="8">8</button>
+          <button value="9">9</button>
+          <button value="+" class="operator">+</button>
+        </div>
+        <div class="row">
+          <button value="4">4</button>
+          <button value="5">5</button>
+          <button value="6">6</button>
+          <button value="-" class="operator">-</button>
+        </div>
+        <div class="row">
+          <button value="1">1</button>
+          <button value="2">2</button>
+          <button value="3">3</button>
+          <button value="*" class="operator">&times;</button>
+        </div>
+        <div class="row">
+          <button value="/" class="operator">&divide;</button>
+          <button value="0">0</button>
+          <button value="." class="operator">.</button>
+          <button value="=" class="operator">=</button>
+        </div>
+        <div class="row">
+          <button value="clear" class="operator block equal">Clear All</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const calculator = {
+        displayValue: '0',
+        firstValue: null,
+        waitingForSecondValue: false,
+        operator: null,
+      };
+
+      function input(num) {
+        const { displayValue, waitingForSecondValue } = calculator;
+
+        if (waitingForSecondValue === true) {
+          calculator.displayValue = num;
+          calculator.waitingForSecondValue = false;
+        } else {
+          calculator.displayValue = displayValue === '0' ? num : displayValue + num;
+        }
+      }
+
+      function inputDot(dot) {
+        if (calculator.waitingForSecondValue === true) {
+          calculator.displayValue = '0.';
+          calculator.waitingForSecondValue = false;
+          return;
+        }
+
+        if (!calculator.displayValue.includes(dot)) {
+          calculator.displayValue += dot;
+        }
+      }
+
+      function operatorHandle(nextOperator) {
+        const { firstValue, displayValue, operator } = calculator;
+        const inputValue = parseFloat(displayValue);
+
+        if (operator && calculator.waitingForSecondValue) {
+          calculator.operator = nextOperator;
+          return;
+        }
+
+        if (firstValue == null && !isNaN(inputValue)) {
+          calculator.firstValue = inputValue;
+        } else if (operator) {
+          const result = calculate(firstValue, inputValue, operator);
+
+          calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+          calculator.firstValue = result;
+        }
+
+        calculator.waitingForSecondValue = true;
+        calculator.operator = nextOperator;
+      }
+
+      function calculate(firstValue, secondValue, operator) {
+        if (operator === '+') {
+          return firstValue + secondValue;
+        } else if (operator === '-') {
+          return firstValue - secondValue;
+        } else if (operator === '*') {
+          return firstValue * secondValue;
+        } else if (operator === '/') {
+          return firstValue / secondValue;
+        }
+
+        return secondValue;
+      }
+
+      function reset() {
+        calculator.displayValue = '0';
+        calculator.firstValue = null;
+        calculator.waitingForSecondValue = false;
+        calculator.operator = null;
+      }
+
+      function updateDisplay() {
+        const display = document.querySelector('.display');
+        display.value = calculator.displayValue;
+      }
+
+      updateDisplay();
+
+      const buttons = document.querySelector('.buttons');
+      buttons.addEventListener('click', event => {
+        const { target } = event;
+        const { value } = target;
+        if (!target.matches('button')) {
+          return;
+        }
+
+        switch (value) {
+          case '+':
+          case '-':
+          case '*':
+          case '/':
+          case '=':
+            operatorHandle(value);
+            break;
+          case '.':
+            inputDot(value);
+            break;
+          case 'clear':
+            reset();
+            break;
+          default:
+            if (Number.isInteger(parseFloat(value))) {
+              input(value);
+            }
+        }
+
+        updateDisplay();
+      });
+    </script>
+  </body>
+</html>
