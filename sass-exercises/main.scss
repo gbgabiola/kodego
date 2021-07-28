@@ -1,3 +1,35 @@
+$color-light: #fff;
+$color-medium-200: #b9b8b9;
+$color-medium-400: #ece9eb;
+$color-medium-700: #8d8b8d;
+$color-medium-900: #545355;
+$color-dark: #343033;
+$ff-primary: Arial, Helvetica, sans-serif;
+$width-website: 1200px;
+
+@mixin mq($breakpoint) {
+  @if $breakpoint == mobile {
+    @media only screen and (min-width: 28.75em) {
+      @content;
+    } // 460px
+  }
+  @if $breakpoint == tablet {
+    @media only screen and (min-width: 48em) {
+      @content;
+    } // 768px
+  }
+  @if $breakpoint == laptop {
+    @media only screen and (min-width: 64em) {
+      @content;
+    } // 1024px
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 114em) {
+      @content;
+    } // 1824px
+  }
+}
+
 // Core Styles
 * {
   box-sizing: border-box;
@@ -7,7 +39,7 @@
 
 body {
   margin: 2.5rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $ff-primary;
 }
 
 a {
@@ -27,9 +59,9 @@ a {
   height: 90vh;
 
   .box {
-    background-color: #ece9eb;
-    border: 2px solid #8d8b8d;
-    color: #343033;
+    background-color: $color-medium-400;
+    border: 2px solid $color-medium-700;
+    color: $color-dark;
     padding: 0.6rem;
     font-size: 1.2rem;
     font-weight: 700;
@@ -46,14 +78,14 @@ nav {
   align-items: center;
 
   .logo {
-    background-color: #fff;
-    border: 2px solid #8d8b8d;
+    background-color: $color-light;
+    border: 2px solid $color-medium-700;
     padding: 0.6rem 1.5rem;
     font-size: 1rem;
     font-weight: 700;
 
     a {
-      color: #b9b8b9;
+      color: $color-medium-200;
     }
   }
 
@@ -66,7 +98,7 @@ nav {
       a {
         display: block;
         padding: 0.9rem;
-        color: #545355;
+        color: $color-medium-900;
         font-size: 0.9rem;
         font-weight: 700;
       }
@@ -113,9 +145,9 @@ footer {
   }
 }
 
-@media only screen and (min-width: 600px) {
+@include mq(tablet) {
   .container {
-    max-width: 1200px;
+    max-width: $width-website;
     margin: 0 auto;
     grid-template-rows: 20vh 1fr 10vh;
     grid-template-areas:
@@ -135,18 +167,9 @@ footer {
     align-items: flex-end;
 
     .logo {
-      border: 2px solid #8d8b8d;
-
       padding: 0.6rem 2rem;
       font-size: 1.2rem;
-      font-weight: 700;
-      background-color: #fff;
       align-self: center;
-      // flex: 1;
-
-      a {
-        color: #b9b8b9;
-      }
     }
 
     .nav-menu {
