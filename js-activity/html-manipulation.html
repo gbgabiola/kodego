@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Manipulation through DOM</title>
+    <style>
+      table,
+      input {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Secret Mission</button>
+
+    <table id="sampleTable" border="1">
+      <tr>
+        <td>Row1 cell1</td>
+      </tr>
+    </table>
+    <br />
+    <input type="button" onclick="insert_row()" value="Insert row" />
+
+    <script>
+      const button = document.querySelector('button');
+      const table = document.querySelector('table');
+      const tr = document.querySelector('tr');
+      const insert = document.querySelector('input');
+
+      button.addEventListener('click', show);
+
+      function show() {
+        table.style.display = 'table';
+        insert.style.display = 'block';
+      }
+
+      function insert_row() {
+        // const row = document.createElement('td');
+        // tr.append(row);
+        const row = table.insertRow();
+        const cell1 = row.insertCell();
+        const cell2 = row.insertCell(1);
+        cell1.innerHTML += 'Row cell1';
+        cell2.innerHTML += 'Row cell2';
+
+        // Step 4
+        const td1 = document.querySelectorAll('td')[0];
+        td1.innerText = `Secret mission? What plans? What are you talking about? I'm not getting in there!`;
+
+        // Step 5
+        td1.style.fontSize = '34px';
+        td1.style.fontFamily = 'Arial, sans-serif';
+        td1.style.color = 'red';
+
+        const td2 = document.querySelectorAll('td')[1];
+
+        const words = `Are you sure this things safe? Close up formation. You'd better let her loose. Almost there! I can't hold them! It's away! It's a hit! Negative.`;
+
+        // cell2.innerHTML = words
+        //   .split(' ')
+        //   .map(word => (word.length >= 7 ? (cell2.style.backgroundColor = 'yellow') : cell2.innerText))
+        //   .join(' ');
+
+        // words
+        //   .split(' ')
+        //   .map(word => {
+        //     if (word.length >= 7) {
+        //       // const span = document.createElement('span');
+        //       // span.style.backgroundColor = 'yellow';
+        //       cell2.innerHTML = `<span style="backgroundColor: 'yellow';">word</span>`;
+        //     }
+        //   })
+        //   .join(' ');
+        let word = words.split(' ');
+
+        for (let i = 0; i < word.length; i++) {
+          if (word.length >= 7) {
+            cell2.innerHTML = `<span style="backgroundColor: 'yellow';">${word}</span>`;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

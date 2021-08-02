@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Activity</title>
+  </head>
+  <body>
+    <!-- <form>
+      Enter Value 1 <input type="text" id="val1" /><br />
+      Enter Value 2 <input type="text" id="val2" /><br />
+      <button onclick="getAdd()">Click To Add</button><br />
+      <p id="result"></p>
+    </form> -->
+
+    <!-- <h2>JavaScript HTML DOM!</h2>
+    <p>Hello World!</p>
+    <p>Hello World again!</p>
+    <p id="test"></p>
+    <button onclick="myFunction()">Try it</button> -->
+
+    <div id="parent">
+      <p id="child1">Text.</p>
+      <p id="child2">More text.</p>
+    </div>
+    <script>
+      // function getAdd() {
+      //   const num1 = Number(document.querySelector('#val1').value);
+      //   const num2 = Number(document.querySelector('#val2').value);
+      //   const add = num1 + num2;
+      //   const result = document.querySelector('#result');
+
+      //   const form = document.querySelector('form');
+      //   form.addEventListener('click', function (e) {
+      //     e.preventDefault();
+      //   });
+
+      //   result.innerHTML = 'Addition: ' + add;
+      //   result.style.color = 'red';
+      // }
+
+      // function myFunction() {
+      //   var myNodelist = document.querySelectorAll('p');
+      //   var i;
+      //   for (i = 0; i < myNodelist.length; i++) {
+      //     myNodelist[i].style.backgroundColor = 'green';
+      //     myNodelist[i].style.color = '#fff';
+      //   }
+      // }
+
+      var newPara = document.createElement('p');
+      var textNode = document.createTextNode('Unexpected Text!');
+      newPara.appendChild(textNode);
+      // var newElement = document.getElementById('parent');
+      // var newChild = document.getElementById('child1');
+      // newElement.insertBefore(newPara, newChild);
+      var nodeParent = document.getElementById('parent');
+      var nodeChild = document.getElementById('child1');
+      nodeParent.replaceChild(newPara, nodeChild);
+    </script>
+  </body>
+</html>
