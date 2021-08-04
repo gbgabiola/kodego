@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form and Data Validation</title>
+    <style></style>
+  </head>
+  <body>
+    <!-- <form action=""> -->
+    <!-- <label for="username">Username</label>
+      <input type="username" id="username" />
+      <br />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" minlength="6" />
+      <br />
+      <button>Log In</button> -->
+
+    <!-- <div>
+        <input type="radio" name="radio" id="radio1" value="0" />
+        <label for="radio1">Radio1</label>
+      </div>
+      <div>
+        <input type="radio" name="radio" id="radio2" value="1" />
+        <label for="radio2">Radio2</label>
+      </div>
+      <div>
+        <input type="radio" name="radio" id="radio3" value="2" />
+        <label for="radio3">Radio3</label>
+      </div>
+      <button>Get Index</button> -->
+
+    <!-- Terms and Condition -->
+    <!-- <input type="checkbox" name="toc" id="toc" required />
+      <label for="toc">Accept terms and conditions.</label>
+      <button>I accept</button>
+      </form>
+    -->
+
+    <!-- Symptoms -->
+    <!-- <form action="" name="formSymptoms">
+      <p>Check the symptoms you are currently experiencing:</p>
+      <div>
+        <input type="checkbox" name="symptoms" id="check1" value="fever" />
+        <label for="check1">fever</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check2" value="dry cough" />
+        <label for="check2">dry cough</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check3" value="colds" />
+        <label for="check3">colds</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check4" value="tiredness" />
+        <label for="check4">tiredness</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check5" value="aches and pains" />
+        <label for="check5">aches and pains</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check6" value="sore throat" />
+        <label for="check6">sore throat</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check7" value="diarrhea" />
+        <label for="check7">diarrhea</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check8" value="headache" />
+        <label for="check8">headache</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check9" value="loss of taste or smell" />
+        <label for="check9">loss of taste or smell</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check10" value="shortness of breath" />
+        <label for="check10">shortness of breath</label>
+      </div>
+
+      <button>Confirm</button>
+    </form> -->
+
+    <!-- Select: Pets  -->
+    <!-- <form action="">
+      <label for="pets">Select multiple Pets: </label>
+      <select name="pets" multiple id="pets">
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="rabbit">Rabbit</option>
+        <option value="parrot">Parrot</option>
+      </select>
+      <button>Confirm</button>
+    </form> -->
+
+    <!-- Checkbox with Select All -->
+    <form action="">
+      <p>Check the symptoms you are currently experiencing:</p>
+      <div>
+        <input type="checkbox" name="" id="toggle" value="" onclick="toggleAll(this)" />
+        <label for="toggle">Select All</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check1" value="fever" />
+        <label for="check1">fever</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check2" value="dry cough" />
+        <label for="check2">dry cough</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check3" value="colds" />
+        <label for="check3">colds</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check4" value="tiredness" />
+        <label for="check4">tiredness</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check5" value="aches and pains" />
+        <label for="check5">aches and pains</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check6" value="sore throat" />
+        <label for="check6">sore throat</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check7" value="diarrhea" />
+        <label for="check7">diarrhea</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check8" value="headache" />
+        <label for="check8">headache</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check9" value="loss of taste or smell" />
+        <label for="check9">loss of taste or smell</label>
+      </div>
+      <div>
+        <input type="checkbox" name="symptoms" id="check10" value="shortness of breath" />
+        <label for="check10">shortness of breath</label>
+      </div>
+      <div>
+        <textarea name="" id="textarea" cols="50" rows="10"></textarea>
+      </div>
+
+      <button>Save</button>
+    </form>
+
+    <script>
+      // Login
+      /*
+      const form = document.querySelector('form');
+      const login = () => {
+        if (username.value === '') {
+          alert('Please make sure username is not empty.');
+        } else if (password.value === '') {
+          alert('Please make sure password is not empty.');
+        } else {
+          document.write(`You are now logged in ${username.value}`);
+        }
+      };
+
+      form.onsubmit = login;
+      */
+
+      // Radio
+      /*
+      const form = document.querySelector('form');
+      function getIndex() {
+        const index = form.radio.value;
+        // console.log(index);
+
+        // for (let i = 0; i < radio.length; i++) {
+        //   if (rates[i].checked) {
+        //     rate_value = rates[i].value;
+        //   }
+        // }
+        // console.log(radio.length);
+        document.write(`Radio Index is: ${index}`);
+      }
+
+      form.addEventListener('submit', getIndex);
+      */
+
+      // Checkbox toc
+      /*
+      const form = document.querySelector('form');
+      function toc() {
+        document.write('Congratulations, you accepted the terms and conditions.');
+      }
+      form.addEventListener('submit', toc);
+      */
+
+      // Checkbox Symptoms
+      /*
+      const button = document.querySelector('button');
+
+      function getSymptoms(e) {
+        e.preventDefault();
+        const checkboxes = document.querySelectorAll('input:checked');
+        const checked = [];
+
+        checkboxes.forEach(checkbox => checked.push(checkbox.value));
+
+        // return checked;
+        document.body.append(`You selected ${checked}, so you will be treated right away!`);
+      }
+      button.addEventListener('click', getSymptoms);
+      */
+
+      // Select Pet
+      // const form = document.querySelector('form');
+      // const button = document.querySelector('button');
+
+      // function getPet(e) {
+      //   const select = document.querySelector('#pets');
+      //   const option = select.options[select.selectedIndex];
+      //   e.preventDefault();
+
+      //   document.body.append(`You selected ${option.text}, that's a nice pet.`);
+      //   // document.write(`You selected ${option.text}, that's a nice pet.`);
+      // }
+
+      // form.addEventListener('submit', getPet);
+      // button.addEventListener('click', getPet);
+
+      // Select multiple Pets :  Dog, Cat, Rabbit, Parrot
+      // Ways to manipulate and iterate arrays 1. filter and map methods 2. for …. of loop 3. forEach 4. seletedOptions property  5. querySelectorAll
+
+      // function getPet2(e) {
+      //   e.preventDefault();
+      //   const select = document.querySelector('#pets');
+      //   var selected = [];
+
+      //   // Using for...of
+      //   // for (let option of select.options) {
+      //   //   if (option.selected) {
+      //   //     selected.push(option.text);
+      //   //   }
+      //   // }
+
+      //   // Using map
+      //   Array.from(select.options).map(option => {
+      //     if (option.selected) {
+      //       selected.push(option.text);
+      //     }
+      //   });
+
+      //   document.body.append(`You selected ${selected.join(', ')}.`);
+      // }
+
+      // button.addEventListener('click', getPet2);
+
+      // Select All checkbox
+      const form = document.querySelector('form');
+      const button = document.querySelector('button');
+      const textarea = document.querySelector('textarea');
+      const toggleInput = document.querySelector('#toggle');
+
+      function getSymptoms(e) {
+        e.preventDefault();
+        const checkboxes = document.querySelectorAll('input:checked');
+        const checked = [];
+
+        checkboxes.forEach(checkbox => checked.push(checkbox.value));
+
+        // return checked;
+        // document.body.append(`You selected ${checked.join(', ')}, so you will be treated right away!`);
+        textarea.append(`You selected ${checked.join(', ')}, so you will be treated right away!`);
+      }
+
+      function toggleAll(src) {
+        const checkboxes = document.getElementsByName('symptoms');
+        // for (let checkbox in checkboxes) {
+        //   checkbox.checked = src.checked;
+        // }
+
+        for (let i = 0, n = checkboxes.length; i < n; i++) {
+          checkboxes[i].checked = src.checked;
+        }
+      }
+
+      // toggleInput.addEventListener('click', toggleAll(this));
+      button.addEventListener('click', getSymptoms);
+    </script>
+  </body>
+</html>
