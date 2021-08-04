@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+      @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+
+      :root {
+        --color-primary: #009579;
+        --color-primary-dark: #007f67;
+        --color-secondary: #252c6a;
+        --color-error: #cc3333;
+        --color-success: #4bb544;
+        --color-light: #ffffff;
+        --color-medium: #777;
+        --border-radius: 4px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      .container-login {
+        width: 400px;
+        max-width: 100%;
+        margin: 1rem;
+        padding: 2rem;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+        border-radius: var(--border-radius);
+        background: var(--color-light);
+      }
+
+      .container-patient {
+        width: 90vw;
+        max-width: 100%;
+        height: 90vh;
+        margin: 1rem;
+        padding: 2rem;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+        border-radius: var(--border-radius);
+        background: var(--color-light);
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .form-heading {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .form-control {
+        position: relative;
+        margin-bottom: 0.6rem;
+        padding-bottom: 1.2rem;
+      }
+
+      .form-control label {
+        display: inline-block;
+        margin-bottom: 0.3rem;
+      }
+
+      .form-control input {
+        width: 100%;
+        padding: 0.75rem;
+        box-sizing: border-box;
+        border-radius: var(--border-radius);
+        border: 1px solid #dddddd;
+        outline: none;
+        background: #eeeeee;
+        transition: background 0.2s, border-color 0.2s;
+      }
+
+      .form-control input:focus {
+        border-color: var(--color-medium);
+        background: var(--color-light);
+      }
+
+      .form-control.error input {
+        color: var(--color-error);
+        border-color: var(--color-error);
+      }
+
+      .form-control.success input {
+        color: var(--color-success);
+        border-color: var(--color-success);
+      }
+
+      .form-control i {
+        visibility: hidden;
+        position: absolute;
+        top: 40px;
+        right: 10px;
+      }
+
+      .form-control.error i.fa-exclamation-circle {
+        color: var(--color-error);
+        visibility: visible;
+      }
+
+      .form-control.success i.fa-check-circle {
+        color: var(--color-success);
+        visibility: visible;
+      }
+
+      .form-control small {
+        color: var(--color-error);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        visibility: hidden;
+      }
+
+      .form-control.error small {
+        visibility: visible;
+      }
+
+      .form button {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: var(--color-light);
+        border: none;
+        border-radius: var(--border-radius);
+        outline: none;
+        cursor: pointer;
+        background: var(--color-primary);
+      }
+
+      .form button:hover {
+        background: var(--color-primary-dark);
+      }
+
+      .form button:active {
+        transform: scale(0.98);
+        /* transform: scale(2); */
+      }
+
+      .form-text {
+        text-align: center;
+        margin: 0.5rem;
+      }
+
+      .form-link {
+        color: var(--color-secondary);
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .form-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="#patientForm" class="container-login form" id="loginForm">
+      <h1 class="form-heading">Admin Login</h1>
+      <div class="form-control">
+        <label for="username">Username</label>
+        <input type="text" class="form-input" id="username" autofocus placeholder="Username" />
+
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+      <div class="form-control">
+        <label for="password">Password</label>
+        <input type="password" class="form-input" id="password" autofocus placeholder="Password" />
+
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-exclamation-circle"></i>
+        <small>Error message</small>
+      </div>
+      <!-- <button class="form-button" type="submit">Login</button> -->
+      <button class="form-button" href="./" id="">Login</button>
+      <p class="form-text">
+        <a href="#" class="form-link">Forgot your password?</a>
+      </p>
+      <p class="form-text">
+        <a class="form-link" href="#" id="linkCreateAccount">Don't have an account? Create account</a>
+      </p>
+    </form>
+
+    <form class="container-patient form hidden" id="patientForm">
+      <button class="form-button" type="submit">Submit</button>
+    </form>
+    <!-- </div> -->
+
+    <script>
+      const loginForm = document.querySelector('#loginForm');
+      const username = document.querySelector('#username');
+      const password = document.querySelector('#password');
+
+      loginForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        checkInputs();
+        if (!(username.value === '' || password.value.length < 6)) {
+          alert('Login successfully!');
+          loginForm.classList.add('hidden');
+          patientForm.classList.remove('hidden');
+        }
+      });
+
+      function checkInputs() {
+        const usernameValue = username.value.trim();
+        const passwordValue = password.value.trim();
+
+        if (usernameValue === '') {
+          setInputError(username, 'Username cannot be blank');
+        } else {
+          clearInputError(username);
+        }
+
+        if (passwordValue.length < 6) {
+          setInputError(password, 'Password must be at least 6 characters.');
+        } else {
+          clearInputError(password);
+        }
+      }
+
+      function setInputError(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector('small');
+        formControl.className = 'form-control error';
+        // formControl.classList.add('error');
+        small.innerText = message;
+      }
+
+      function clearInputError(input) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector('small');
+        // formControl.className = 'form-control error';
+        formControl.classList.remove('error');
+        small.innerText = '';
+      }
+    </script>
+  </body>
+</html>
