@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classes</title>
+  </head>
+  <body>
+    <script>
+      // class Vehicle {
+      //   constructor(brand, model, color) {
+      //     this.brand = brand;
+      //     this.model = model;
+      //     this.color = color;
+      //   }
+      //   getBrandModel() {
+      //     return `${this.brand} ${this.model}`;
+      //   }
+      // }
+
+      // class Car extends Vehicle {
+      //   getBrandModel() {
+      //     return `${super.getBrandModel()} called based class function from child class.`;
+      //   }
+      // }
+
+      // let car = new Car('Honda', 'SUV', 'Blue');
+      // console.log(car.getBrandModel());
+
+      // Create a Product with constructor name, price , and method that would return " {the product name} {price} in Peso"
+      class Product {
+        constructor(name, price) {
+          this.name = name;
+          this.price = price;
+        }
+
+        get productPrice() {
+          return `${this.name} const ${this.price} pesos.`;
+        }
+      }
+
+      let product1 = new Product('Safeguard', 50);
+      let product2 = new Product('Clear', 80);
+      let product3 = new Product('Tang', 25);
+
+      class ShoppingCart {
+        constructor() {
+          this.products = [];
+          this.totalPrice = 0;
+        }
+
+        addToCart(product) {
+          this.products.push(product);
+          this.totalPrice += product.price;
+        }
+        // getTotal() {
+        //   let cart = [product1, product2, product3];
+        //   let total = 0;
+        //   for (let i in cart) {
+        //     total += cart[i].price;
+        //   }
+
+        //   return total;
+        // }
+      }
+
+      let cart = new ShoppingCart();
+      cart.addToCart(product1);
+      cart.addToCart(product2);
+      cart.addToCart(product3);
+
+      console.log(cart);
+    </script>
+  </body>
+</html>
