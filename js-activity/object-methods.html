@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Defining Methods in Object</title>
+  </head>
+  <body>
+    <script>
+      function Person(firstname, lastname, age, gender, interests) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+        this.bio = function () {
+          return `${this.firstname} ${this.lastname} is ${this.age} years old. He likes ${this.interests[0]} and ${this.interests[1]}`;
+        };
+        this.greeting = function () {
+          alert(`Hi! I'm ${this.firstname}.`);
+        };
+      }
+
+      let person1 = new Person('Juan', 'Cruz', 30, 'Male', ['music', 'singing']);
+      console.log(person1);
+
+      document.write(person1.bio());
+    </script>
+  </body>
+</html>
