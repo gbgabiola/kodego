@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library JavaScript Object</title>
+  </head>
+  <body>
+    <script>
+      function Library(libraryid, bookname, author, yearpublished, isRead) {
+        this.libraryid = libraryid;
+        this.bookname = bookname;
+        this.author = author;
+        this.yearpublished = yearpublished;
+        this.isRead = isRead;
+        this.display = function () {
+          return `ID: ${this.libraryid} Title: ${this.bookname}, Author: ${this.author}, Year: ${this.yearpublished}.<br />`;
+        };
+        this.read = function () {
+          if (this.isRead === true) {
+            return `I have read the following book: ${this.bookname}`;
+          }
+        };
+        this.toRead = function () {
+          if (this.isRead === false) {
+            return `I haven't read the following book: ${this.bookname}`;
+          }
+        };
+      }
+
+      const id = Date.now();
+      const book1 = new Library(id, 'Real Men Are Pogi', 'Ardy Roberto', 2000, true);
+      const book2 = new Library(id, 'The Design of Everyday Things', 'Don Norman', 1900, false);
+      const book3 = new Library(id, 'The Hobbit', 'JRR Tolkien', 1995, true);
+      const book4 = new Library(id, 'Steve Jobs', 'Walter Isaacson', 2001, true);
+      const book5 = new Library(id, 'Mockingjay', 'Suzanne Collins', 2015, false);
+
+      const books = [book1, book2, book3, book4, book5];
+      const booksDisplay = [book1.display(), book2.display(), book3.display(), book4.display(), book5.display()];
+
+      // let booksArray = [];
+      // for (let book in books) {
+      //   // booksArray += books[book] + '<br />';
+      //   if (books.hasOwnProperty(book)) {
+      //     booksArray.push(book);
+      //   }
+      // }
+
+      function displayBooks() {
+        document.write(booksDisplay.sort().join(' '));
+
+        for (let i in books) {
+          if (books[i].isRead === true) {
+            document.write(`${books[i].read()} <br />`);
+          }
+        }
+
+        for (let i in books) {
+          if (books[i].isRead === false) {
+            document.write(`${books[i].toRead()} <br />`);
+          }
+        }
+      }
+      displayBooks();
+
+      // console.log(JSON.stringify(books.sort((a, b) => (a.bookname > b.bookname ? 1 : -1))));
+
+      // console.log(books.sort((a, b) => (a.bookname > b.bookname ? 1 : -1)));
+      // document.write(booksDisplay.sort().join(' '));
+    </script>
+  </body>
+</html>
