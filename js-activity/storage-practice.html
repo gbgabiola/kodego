@@ -5,6 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Storage</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      form {
+        width: 80vw;
+        margin: auto;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      label {
+        display: inline-block;
+        margin-bottom: 0.3rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        max-width: 70vw;
+        padding: 0.5rem;
+        border-radius: 4px;
+        border: 1px solid #dddddd;
+        outline: none;
+        background: #eeeeee;
+        transition: all 0.2s;
+        resize: none;
+      }
+
+      input:focus,
+      textarea:focus {
+        background: #fff;
+      }
+
+      button {
+        display: inline-block;
+      }
+
+      #movieDisplay {
+        width: 80vw;
+        margin: 10% auto;
+        border: 1px solid #333;
+      }
+    </style>
   </head>
   <body>
     <form action="">
@@ -20,11 +70,21 @@
       <textarea name="review" id="review" cols="30" rows="10" required></textarea>
       <br />
 
-      <button id="btn">Submit</button>
-
-      <div id="display">
-        <!-- <pre></pre> -->
+      <div class="buttons">
+        <button id="btn">Submit Review</button>
+        <button id="btnDisplay">Generate Report</button>
       </div>
+
+      <div id="display"></div>
+
+      <table id="movieDisplay">
+        <tr>
+          <th>ID</th>
+          <th>Movie Title</th>
+          <th>Year</th>
+          <th>Reviews</th>
+        </tr>
+      </table>
     </form>
 
     <script>
@@ -43,13 +103,39 @@
         console.table(movieReviews);
 
         let displayMovie = document.querySelector('#display');
-        displayMovie.innerHTML = JSON.stringify(movieReviews, null, 2);
-        localStorage.setItem(movieReview.title, JSON.stringify(movieReviews));
+        // displayMovie.innerHTML = JSON.stringify(movieReviews, null, 2);
+        localStorage.setItem('movieReviews', JSON.stringify(movieReviews));
       };
 
       document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector('#btn').addEventListener('click', addMovieReview);
+        btn.addEventListener('click', addMovieReview);
+        btnDisplay.addEventListener('click', displayMovieReview);
       });
+
+      const displayMovieReview = e => {
+        e.preventDefault();
+        let arr1 = new Array();
+        arr1 = JSON.parse(localStorage.getItem('movieReviews'));
+        // alert(arr1.length);
+
+        let table = movieDisplay;
+        // for (let i = 0; i < arr1.length; i++) {
+        for (let i in arr1) {
+          let row = table.insertRow();
+          let td1 = row.insertCell();
+          let td2 = row.insertCell();
+          let td3 = row.insertCell();
+          let td4 = row.insertCell();
+
+          td1.innerHTML = arr1[i].id;
+          td2.innerHTML = arr1[i].title;
+          td3.innerHTML = arr1[i].year;
+          td4.innerHTML = arr1[i].review;
+        }
+
+        localStorage.clear();
+        movieReviews.length = 0;
+      };
     </script>
   </body>
 </html>
