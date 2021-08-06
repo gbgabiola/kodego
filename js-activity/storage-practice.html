@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Storage</title>
+  </head>
+  <body>
+    <form action="">
+      <label for="title">Movie</label>
+      <input type="text" name="title" id="title" required />
+      <br />
+
+      <label for="year">Year</label>
+      <input type="number" name="year" id="year" required />
+      <br />
+
+      <label for="review">Review</label>
+      <textarea name="review" id="review" cols="30" rows="10" required></textarea>
+      <br />
+
+      <button id="btn">Submit</button>
+
+      <div id="display">
+        <!-- <pre></pre> -->
+      </div>
+    </form>
+
+    <script>
+      let movieReviews = [];
+      const addMovieReview = e => {
+        e.preventDefault();
+        let movieReview = {
+          id: Date.now(),
+          title: document.querySelector('#title').value,
+          year: document.querySelector('#year').value,
+          review: document.querySelector('#review').value,
+        };
+
+        movieReviews.push(movieReview);
+        document.querySelector('form').reset();
+        console.table(movieReviews);
+
+        let displayMovie = document.querySelector('#display');
+        displayMovie.innerHTML = JSON.stringify(movieReviews, null, 2);
+        localStorage.setItem(movieReview.title, JSON.stringify(movieReviews));
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('#btn').addEventListener('click', addMovieReview);
+      });
+    </script>
+  </body>
+</html>
