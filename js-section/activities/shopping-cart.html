@@ -53,7 +53,7 @@
         padding: 2rem 0;
       }
 
-      .products-center {
+      .products-content {
         width: 90vw;
         max-width: 1170px;
         display: grid;
@@ -113,7 +113,7 @@
           /* padding: 1rem; */
         }
 
-        .products-center {
+        .products-content {
           place-items: start;
         }
       }
@@ -132,7 +132,7 @@
             <div>
               <h4></h4>
               <h5></h5>
-              <span class="remove-item">remove</span>
+              <span class="remove-item">Remove</span>
             </div>
             <div>
               <i class="fas fa-chevron-up"></i>
@@ -141,19 +141,20 @@
             </div>
           </div> -->
         </div>
-        <div class="cart-footer">
+        <!-- .cart-content -->
+
+        <div>
           <h3>Your Total : ₱<span class="cart-total">0</span></h3>
           <button class="clear-cart">Clear Cart</button>
         </div>
       </div>
-      <!-- cart -->
+      <!-- .cart -->
 
-      <!-- products -->
-      <section class="products">
-        <div class="section-title">
+      <div class="products">
+        <div>
           <h2>Our Products</h2>
         </div>
-        <div class="products-center">
+        <div class="products-content">
           <!-- <div class="product">
             <button class="cart-btn" data-id="1">
               <i class="fas fa-shopping-cart"></i>
@@ -161,39 +162,19 @@
             </button>
             <h3>Item name</h3>
             <h4>₱00.00</h4>
-          </div>
-        </div> -->
-      </section>
+          </div> -->
+        </div>
+      </div>
+      <!-- .products -->
     </div>
-    <!-- end of products -->
+    <!-- .container -->
 
     <script>
-      // class Vehicle {
-      //   constructor(brand, model, color) {
-      //     this.brand = brand;
-      //     this.model = model;
-      //     this.color = color;
-      //   }
-      //   getBrandModel() {
-      //     return `${this.brand} ${this.model}`;
-      //   }
-      // }
-
-      // class Car extends Vehicle {
-      //   getBrandModel() {
-      //     return `${super.getBrandModel()} called based class function from child class.`;
-      //   }
-      // }
-
-      // let car = new Car('Honda', 'SUV', 'Blue');
-      // console.log(car.getBrandModel());
-
-      // Create a Product with constructor name, price , and method that would return " {the product name} {price} in Peso"
       const cartItems = document.querySelector('.cart-items');
       const cartTotal = document.querySelector('.cart-total');
       const cartContent = document.querySelector('.cart-content');
       const clearCartBtn = document.querySelector('.clear-cart');
-      const productsDOM = document.querySelector('.products-center');
+      const productsDOM = document.querySelector('.products-content');
 
       let cart = [];
 
