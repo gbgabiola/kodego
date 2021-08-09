@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "name": "Safeguard",
+      "price": 25.75
+    },
+    {
+      "id": "2",
+      "name": "Creamsilk",
+      "price": 10.99
+    },
+    {
+      "id": "3",
+      "name": "Nivea Deodorant",
+      "price": 80.25
+    },
+    {
+      "id": "4",
+      "name": "Pomade",
+      "price": 180.91
+    }
+  ]
+}
