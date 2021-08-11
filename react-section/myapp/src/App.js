@@ -1,11 +1,11 @@
-import SchoolBoardData from './components/SchoolBoardData';
-import SchoolBoard from './components/SchoolBoard';
+import ImgCardDisplay from './components/ImgCardDisplay';
 
 function App() {
-  const data = SchoolBoardData.map(board => (
-    <SchoolBoard id={board.id} category={board.category} post={board.post} />
-  ));
-  return <div>{data}</div>;
+  return (
+    <>
+      <ImgCardDisplay />
+    </>
+  );
 }
 
 export default App;
