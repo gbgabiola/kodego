@@ -46,6 +46,8 @@ footer {
   color: white;
   position: relative;
   text-align: center;
+  position: fixed;
+  bottom: 0;
 }
 
 footer a,
