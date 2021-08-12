@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Header = () => {
+const TimeGreeting = () => {
   const styles = {
     backgroundColor: 'black',
     color: 'white',
@@ -57,4 +57,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default TimeGreeting;
