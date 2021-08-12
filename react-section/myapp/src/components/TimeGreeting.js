@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 const TimeGreeting = () => {
   const styles = {
-    backgroundColor: 'black',
     color: 'white',
     fontSize: 32,
   };
@@ -19,16 +18,13 @@ const TimeGreeting = () => {
 
   if (hourOfDay < 12) {
     greeting = 'Good Morning!';
-    styles.backgroundColor = 'red';
-    styles.color = 'white';
+    styles.color = 'yellow';
   } else if (hourOfDay < 17) {
     greeting = 'Good Afternoon!';
-    styles.backgroundColor = 'green';
-    styles.color = 'white';
+    styles.color = 'orange';
   } else {
     greeting = 'Good Evening!';
-    styles.backgroundColor = 'blue';
-    styles.color = 'white';
+    styles.color = 'red';
   }
 
   return (
