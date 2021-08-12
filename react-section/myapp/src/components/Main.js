@@ -1,17 +1,24 @@
-import logo from '../logo.svg';
+import { useState } from 'react';
 import '../App.css';
-import Timer from './Timer';
-import DisplayList from './DisplayList';
+// import Timer from './Timer';
+// import DisplayList from './DisplayList';
+import Task from './Task';
+import TaskDisplay from './TaskDisplay';
 
 const Main = () => {
+  const [taskLog, setTaskLog] = useState([]);
+  const addTaskLog = log => {
+    let logs = [...taskLog, log];
+    setTaskLog(logs);
+  };
+
   return (
-    <div>
-      <div className="App">
-        <img src={logo} alt="logo" className="App-logo" />
-      </div>
-      <Timer />
-      <DisplayList />
-    </div>
+    <main>
+      {/* <Timer /> */}
+      {/* <DisplayList /> */}
+      <Task addTaskLog={addTaskLog} />
+      <TaskDisplay taskLog={taskLog} />
+    </main>
   );
 };
 

@@ -12,7 +12,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <i class="fas fa-envelope"></i>
+                <i className="fas fa-envelope"></i>
               </a>
             </span>
             <span className="m-4">
