@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 const Task = ({ addTaskLog }) => {
-  const [taskDesc, setTaskDesc] = useState();
-  const [taskUser, setTaskUser] = useState();
-  const [taskDate, setTaskDate] = useState();
+  const [taskDesc, setTaskDesc] = useState('');
+  const [taskUser, setTaskUser] = useState('');
+  const [taskDate, setTaskDate] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
