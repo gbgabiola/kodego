@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <title>Bonggacious Calculator</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-family: 'Orbitron', sans-serif;
+      }
+
+      body {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 400px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 7px 7px 7px -4px rgba(0, 0, 0, 0.7);
+      }
+
+      .display {
+        position: relative;
+        width: 100%;
+        height: 100px;
+        padding: 20px;
+        background-color: #777;
+        color: #fff;
+        font-size: 30px;
+        text-align: right;
+      }
+
+      .display .previous-operand {
+        height: 20px;
+        font-size: 1.1rem;
+        opacity: 0.4;
+        overflow: hidden;
+      }
+
+      .display .temp-result {
+        position: absolute;
+        bottom: 0;
+        left: 10;
+        font-size: 20px;
+        opacity: 0.4;
+      }
+
+      .buttons {
+        display: grid;
+        grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+      }
+
+      button {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #333;
+        color: #fff;
+        font-size: 1.7rem;
+        border: 0.5px solid rgba(95, 95, 95, 0.5);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      button:hover {
+        background-color: #fa8911;
+      }
+
+      button:active {
+        transform: scale(0.93);
+      }
+
+      button[data-operation],
+      button[data-equals] {
+        background-color: #fa8911;
+      }
+
+      button[data-operation]:hover,
+      button[data-equals]:hover {
+        background-color: rgba(250, 137, 17, 0.8);
+      }
+
+      .span {
+        grid-column: span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="display">
+        <div data-previous-operand class="previous-operand"></div>
+        <div data-current-operand class="current-operand"></div>
+        <div data-temp-result class="temp-result"></div>
+      </div>
+      <!-- .display -->
+
+      <div class="buttons">
+        <button data-all-clear>AC</button>
+        <button data-delete>DEL</button>
+        <button data-operation>%</button>
+        <button data-operation>÷</button>
+
+        <button data-number>7</button>
+        <button data-number>8</button>
+        <button data-number>9</button>
+        <button data-operation>×</button>
+
+        <button data-number>4</button>
+        <button data-number>5</button>
+        <button data-number>6</button>
+        <button data-operation>-</button>
+
+        <button data-number>1</button>
+        <button data-number>2</button>
+        <button data-number>3</button>
+        <button data-operation>+</button>
+
+        <button data-number class="span">0</button>
+        <button data-number data-dot>.</button>
+        <button data-equals>&equals;</button>
+      </div>
+      <!-- .buttons -->
+    </div>
+    <!-- .container -->
+
+    <script>
+      const previousOperandDisplay = document.querySelector(
+        '[data-previous-operand]'
+      );
+      const currentOperandDisplay = document.querySelector(
+        '[data-current-operand]'
+      );
+      const tempResultDisplay = document.querySelector('[data-temp-result]');
+      const numberButtons = document.querySelectorAll('[data-number]');
+      const operationButtons = document.querySelectorAll('[data-operation]');
+      const equalButton = document.querySelector('[data-equals]');
+      const deleteButton = document.querySelector('[data-delete]');
+      const allClearButton = document.querySelector('[data-all-clear]');
+      let previousNumDisplay = '';
+      let currentNumDisplay = '';
+      let result = null;
+      let lastOperation = '';
+      let haveDot = false;
+
+      numberButtons.forEach(number => {
+        number.addEventListener('click', e => {
+          if (e.target.innerText === '.' && !haveDot) {
+            haveDot = true;
+          } else if (e.target.innerText === '.' && haveDot) {
+            return;
+          }
+          currentNumDisplay += e.target.innerText;
+          currentOperandDisplay.innerText = currentNumDisplay;
+        });
+      });
+
+      operationButtons.forEach(operation => {
+        operation.addEventListener('click', e => {
+          if (!currentNumDisplay) return;
+          haveDot = false;
+          const operationName = e.target.innerText;
+          if (previousNumDisplay && currentNumDisplay && lastOperation) {
+            calculate();
+          } else {
+            result = parseFloat(currentNumDisplay);
+          }
+          clearVar(operationName);
+          lastOperation = operationName;
+          console.log(result);
+        });
+      });
+
+      equalButton.addEventListener('click', () => {
+        if (!currentNumDisplay || !previousNumDisplay) return;
+        haveDot = false;
+        calculate();
+        clearVar();
+        currentOperandDisplay.innerText = result;
+        tempResultDisplay.innerText = '';
+        currentNumDisplay = result;
+        previousNumDisplay = '';
+      });
+
+      deleteButton.addEventListener('click', () => {
+        currentOperandDisplay.innerText = '';
+        currentNumDisplay = '';
+      });
+
+      allClearButton.addEventListener('click', () => {
+        previousNumDisplay = '';
+        currentNumDisplay = '';
+        previousOperandDisplay.innerText = '';
+        currentOperandDisplay.innerText = '';
+        result = '';
+        tempResultDisplay.innerText = '';
+      });
+
+      function clearVar(name = '') {
+        previousNumDisplay += currentNumDisplay + ' ' + name + ' ';
+        previousOperandDisplay.innerText = previousNumDisplay;
+        currentOperandDisplay.innerText = '';
+        currentNumDisplay = '';
+        tempResultDisplay.innerText = result;
+      }
+
+      function calculate() {
+        if (lastOperation === '×') {
+          result = parseFloat(result) * parseFloat(currentNumDisplay);
+        } else if (lastOperation === '+') {
+          result = parseFloat(result) + parseFloat(currentNumDisplay);
+        } else if (lastOperation === '−') {
+          result = parseFloat(result) - parseFloat(currentNumDisplay);
+        } else if (lastOperation === '÷') {
+          result = parseFloat(result) / parseFloat(currentNumDisplay);
+        } else if (lastOperation === '%') {
+          result = parseFloat(result) % parseFloat(currentNumDisplay);
+        }
+      }
+
+      window.addEventListener('keydown', e => {
+        if (
+          e.key === '0' ||
+          e.key === '1' ||
+          e.key === '2' ||
+          e.key === '3' ||
+          e.key === '4' ||
+          e.key === '5' ||
+          e.key === '6' ||
+          e.key === '7' ||
+          e.key === '8' ||
+          e.key === '9' ||
+          e.key === '.'
+        ) {
+          clickNumber(e.key);
+        } else if (e.key === '+' || e.key === '-' || e.key === '%') {
+          clickOperation(e.key);
+        } else if (e.key === '*') {
+          clickOperation('×');
+        } else if (e.key === '/') {
+          clickOperation('÷');
+        } else if (e.key == 'Enter' || e.key === '=') {
+          clickEqual();
+        } else if (e.key == 'Backspace' || e.key == 'Delete') {
+          clickDelete();
+        } else if (e.key == 'Escape') {
+          clickAllClear();
+        }
+      });
+
+      function clickNumber(key) {
+        numberButtons.forEach(button => {
+          if (button.innerText === key) {
+            button.click();
+          }
+        });
+      }
+
+      function clickOperation(key) {
+        operationButtons.forEach(operation => {
+          if (operation.innerText === key) {
+            operation.click();
+          }
+        });
+      }
+
+      function clickEqual() {
+        equalButton.click();
+      }
+
+      function clickDelete() {
+        deleteButton.click();
+      }
+
+      function clickAllClear() {
+        allClearButton.click();
+      }
+    </script>
+  </body>
+</html>

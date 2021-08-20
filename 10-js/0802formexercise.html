@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Validation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <style>
       @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
       @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
@@ -191,7 +194,13 @@
       <h1 class="form-heading">Admin Login</h1>
       <div class="form-control">
         <label for="username">Username</label>
-        <input type="text" class="form-input" id="username" autofocus placeholder="Username" />
+        <input
+          type="text"
+          class="form-input"
+          id="username"
+          autofocus
+          placeholder="Username"
+        />
 
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
@@ -199,7 +208,13 @@
       </div>
       <div class="form-control">
         <label for="password">Password</label>
-        <input type="password" class="form-input" id="password" autofocus placeholder="Password" />
+        <input
+          type="password"
+          class="form-input"
+          id="password"
+          autofocus
+          placeholder="Password"
+        />
 
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
@@ -211,7 +226,9 @@
         <a href="#" class="form-link">Forgot your password?</a>
       </p>
       <p class="form-text">
-        <a class="form-link" href="#" id="linkCreateAccount">Don't have an account? Create account</a>
+        <a class="form-link" href="#" id="linkCreateAccount"
+          >Don't have an account? Create account</a
+        >
       </p>
     </form>
 
@@ -263,11 +280,17 @@
 
       <div class="form-control">
         Gender:
-        <label for="male"><input type="radio" name="gender" id="male" checked /> Male</label>
+        <label for="male"
+          ><input type="radio" name="gender" id="male" checked /> Male</label
+        >
 
-        <label for="female"><input type="radio" name="gender" id="female" /> Female</label>
+        <label for="female"
+          ><input type="radio" name="gender" id="female" /> Female</label
+        >
 
-        <label for="others"><input type="radio" name="gender" id="others" /> Others</label>
+        <label for="others"
+          ><input type="radio" name="gender" id="others" /> Others</label
+        >
 
         <i class="fas fa-check-circle"></i>
         <i class="fas fa-exclamation-circle"></i>
@@ -286,7 +309,13 @@
       <div class="form-control">
         <p>Medical History:</p>
         <div>
-          <input type="checkbox" name="" id="toggle" value="" onclick="toggleAll(this)" />
+          <input
+            type="checkbox"
+            name=""
+            id="toggle"
+            value=""
+            onclick="toggleAll(this)"
+          />
           <label for="toggle">Select All</label>
         </div>
         <div>
@@ -298,29 +327,56 @@
           <label for="check2">Cancer</label>
         </div>
         <div>
-          <input type="checkbox" name="medHistory" id="check3" value="Cardiac Disease" />
+          <input
+            type="checkbox"
+            name="medHistory"
+            id="check3"
+            value="Cardiac Disease"
+          />
           <label for="check3">Cardiac Disease</label>
         </div>
         <div>
-          <input type="checkbox" name="medHistory" id="check4" value="Diabetes" />
+          <input
+            type="checkbox"
+            name="medHistory"
+            id="check4"
+            value="Diabetes"
+          />
           <label for="check4">Diabetes</label>
         </div>
         <div>
-          <input type="checkbox" name="medHistory" id="check5" value="Hypertension" />
+          <input
+            type="checkbox"
+            name="medHistory"
+            id="check5"
+            value="Hypertension"
+          />
           <label for="check5">Hypertension</label>
         </div>
         <div>
-          <input type="checkbox" name="medHistory" id="check6" value="Psychiatric Disorder" />
+          <input
+            type="checkbox"
+            name="medHistory"
+            id="check6"
+            value="Psychiatric Disorder"
+          />
           <label for="check6">Psychiatric Disorder</label>
         </div>
         <div>
-          <input type="checkbox" name="medHistory" id="check7" value="Epilepsy" />
+          <input
+            type="checkbox"
+            name="medHistory"
+            id="check7"
+            value="Epilepsy"
+          />
           <label for="check7">Epilepsy</label>
         </div>
       </div>
 
       <div class="form-control">
-        <label for="symptoms">Select the symptoms you are currently experiencing: </label>
+        <label for="symptoms"
+          >Select the symptoms you are currently experiencing:
+        </label>
         <select name="symptoms" multiple id="symptoms">
           <option value="none">No Symptoms</option>
           <option value="chestPain">Chest Pain</option>
@@ -340,11 +396,22 @@
 
       <div class="form-control">
         Are you currently taking any medication?
-        <label for="medicationYes"> <input type="radio" name="medication" id="medicationYes" /> Yes </label>
-        <label for="medicationNo"> <input type="radio" name="medication" id="medicationNo" checked /> No </label>
+        <label for="medicationYes">
+          <input type="radio" name="medication" id="medicationYes" /> Yes
+        </label>
+        <label for="medicationNo">
+          <input type="radio" name="medication" id="medicationNo" checked /> No
+        </label>
 
         <label for="medicationBox"></label>
-        <textarea class="hidden" name="medicationBox" id="medicationBox" cols="30" rows="10" disabled></textarea>
+        <textarea
+          class="hidden"
+          name="medicationBox"
+          id="medicationBox"
+          cols="30"
+          rows="10"
+          disabled
+        ></textarea>
       </div>
 
       <button class="btn btn-primary">Submit</button>
@@ -356,7 +423,13 @@
         e.preventDefault();
 
         checkLogin();
-        if (!(username.value.trim() === '' || password.value.trim() === '' || password.value.length < 6)) {
+        if (
+          !(
+            username.value.trim() === '' ||
+            password.value.trim() === '' ||
+            password.value.length < 6
+          )
+        ) {
           loginForm.classList.add('hidden');
           patientForm.classList.remove('hidden');
           alert('Login successfully!');
@@ -430,6 +503,8 @@
         ) {
           alert('You have successfully submitted the form.');
           location.reload();
+          loginForm.classList.add('hidden');
+          patientForm.classList.remove('hidden');
         }
       });
 
@@ -469,7 +544,12 @@
       }
       document
         .getElementsByName('medication')
-        .forEach(medicationRadioButton => medicationRadioButton.addEventListener('click', enableDisableMedicationBox));
+        .forEach(medicationRadioButton =>
+          medicationRadioButton.addEventListener(
+            'click',
+            enableDisableMedicationBox
+          )
+        );
     </script>
   </body>
 </html>
