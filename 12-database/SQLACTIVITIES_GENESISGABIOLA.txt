@@ -1,0 +1,15 @@
+Write the SQL queries of the following:
+
+1.  Which actors have the first name 'Scarlett'?: SELECT * FROM actor WHERE first_name='Scarlett';
+2.  Insert a new record to actor: INSERT INTO actor(first_name, last_name) VALUES('Genesis', 'Gabiola');
+3.  How many distinct actors last names are there? (Hint: use count and distinct functions): SELECT COUNT(DISTINCT(last_name)) FROM actor;
+4.  List the films in descending order: SELECT * from film order by title desc;
+5.  List the films that starts with letter  C: SELECT * FROM film WHERE title REGEXP '^[C]'
+6.  What is the rental duration of the film "Zorro Ark": SELECT rental_duration FROM film WHERE title='Zorro Ark';
+7.  List the films with rental duration of 7: SELECT title, rental_duration FROM film WHERE rental_duration = 7;
+8.  List top 10 highest rental rate: SELECT title, rental_rate FROM film ORDER BY rental_rate DESC LIMIT 10;
+9.  List films with rating PG: SELECT title, rating FROM film WHERE rating='PG';
+10. List film with rental duration between 3 to 5: SELECT title, rental_duration FROM film WHERE rental_duration BETWEEN 3 AND 5;
+11. List films with Trailers: SELECT title, special_features FROM film WHERE special_features IN('Trailers');
+12.  What is that average length of all the films in the sakila DB? SELECT AVG(length) FROM film;
+
