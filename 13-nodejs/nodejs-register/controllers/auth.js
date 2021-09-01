@@ -9,7 +9,7 @@ const db = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-db.connect(err => {
+db.connect((err) => {
   if (err) {
     console.error('error connecting: ' + err.stack);
     return;
@@ -78,7 +78,7 @@ exports.register = (req, res) => {
 exports.login = (req, res) => {
   console.log(req.body);
 
-  const { firstName, email, password } = req.body;
+  const { email, password } = req.body;
 
   if (!email || !password)
     return res.status(400).render('index', {
@@ -88,16 +88,16 @@ exports.login = (req, res) => {
   db.query(
     `SELECT * FROM registry WHERE email = ?`,
     [email],
-    async (err, result) => {
-      console.log(result[0].registryId);
-      if (!result || !(await bcrypt.compare(password, result[0].password))) {
+    async (err, results) => {
+      console.log(results[0].registryId);
+      if (!results || !(await bcrypt.compare(password, results[0].password))) {
         // throw err;
         res
           .status(401)
           .render('index', { message: 'Email or Password is incorrect.' });
         // console.log(err);
       } else {
-        const id = result[0].registryId;
+        const id = results[0].registryId;
         const token = jwt.sign({ id }, process.env.JWT_SECRET, {
           expiresIn: process.env.JWT_EXPIRES_IN,
         });
@@ -110,10 +110,46 @@ exports.login = (req, res) => {
         };
 
         res.cookie('jwt', token, cookieOptions);
-        res.status(200).redirect('/');
-        // console.log(result);
+        // res.status(200).redirect('/');
+        // console.log(results);
         // return res.render('login', { message: `Welcome ${firstName}!` });
+
+        db.query(`SELECT * FROM registry`, (err, results) => {
+          if (err) throw err;
+          res.render('list', { title: 'List of Users', user: results });
+        });
       }
+    }
+  );
+};
+
+// Export updateForm
+exports.updateForm = (req, res) => {
+  const email = req.params.email;
+
+  db.query(
+    `SELECT * FROM registry WHERE email = ?`,
+    [email],
+    (err, results) => {
+      if (err) throw err;
+      res.render('updateForm', { title: 'Edit User', user: results[0] });
+    }
+  );
+};
+
+// Export updateUser
+exports.updateUser = (req, res) => {
+  const { firstName, lastName, email } = req.body;
+
+  db.query(
+    `UPDATE registry SET firstName = '${firstName}', lastName = '${lastName}' WHERE email = '${email}'`,
+    (err, results) => {
+      if (err) throw err;
+
+      db.query(`SELECT * FROM registry`, (err, results) => {
+        if (err) throw err;
+        res.render('list', { user: results });
+      });
     }
   );
 };
