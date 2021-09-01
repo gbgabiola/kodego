@@ -6,5 +6,6 @@ router.post('/login', registrationController.login);
 router.post('/register', registrationController.register);
 router.get('/updateForm/:email', registrationController.updateForm);
 router.post('/updateUser', registrationController.updateUser);
+router.get('/deleteUser/:email', registrationController.deleteUser);
 
 module.exports = router;

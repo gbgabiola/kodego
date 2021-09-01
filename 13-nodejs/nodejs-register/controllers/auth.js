@@ -20,7 +20,7 @@ db.connect((err) => {
 
 // Export register
 exports.register = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   // const firstName = req.body.first_name;
   // const lastName = req.body.last_name;
@@ -50,7 +50,7 @@ exports.register = (req, res) => {
 
       // Encrypt password
       let hashPass = await bcrypt.hash(password, 8);
-      console.log(hashPass);
+      // console.log(hashPass);
 
       db.query(
         `INSERT INTO registry SET ?`,
@@ -65,7 +65,7 @@ exports.register = (req, res) => {
             // throw err;
             console.log(err);
           } else {
-            console.log(results);
+            // console.log(results);
             return res.render('register', { message: 'User registered!' });
           }
         }
@@ -76,7 +76,7 @@ exports.register = (req, res) => {
 
 // Export login
 exports.login = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   const { email, password } = req.body;
 
@@ -89,19 +89,17 @@ exports.login = (req, res) => {
     `SELECT * FROM registry WHERE email = ?`,
     [email],
     async (err, results) => {
-      console.log(results[0].registryId);
+      // console.log(results[0].registryId);
       if (!results || !(await bcrypt.compare(password, results[0].password))) {
-        // throw err;
         res
           .status(401)
           .render('index', { message: 'Email or Password is incorrect.' });
-        // console.log(err);
       } else {
         const id = results[0].registryId;
         const token = jwt.sign({ id }, process.env.JWT_SECRET, {
           expiresIn: process.env.JWT_EXPIRES_IN,
         });
-        console.log(token);
+        // console.log(token);
         const cookieOptions = {
           expires: new Date(
             Date.now() + process.env.COOKIE_EXPIRES * 24 * 60 * 60 * 1000
@@ -152,4 +150,17 @@ exports.updateUser = (req, res) => {
       });
     }
   );
+};
+
+exports.deleteUser = (req, res) => {
+  const email = req.params.email;
+
+  db.query(`DELETE FROM registry WHERE email = '${email}'`, (err, results) => {
+    if (err) throw err;
+
+    db.query(`SELECT * FROM registry`, (err, results) => {
+      if (err) throw err;
+      res.render('list', { user: results });
+    });
+  });
 };
