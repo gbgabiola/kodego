@@ -81,3 +81,42 @@ exports.addStudent = (req, res) => {
     }
   );
 };
+
+exports.updateStudentForm = (req, res) => {
+  const email = req.params.email;
+
+  db.query(
+    `SELECT * FROM students WHERE email = ?`,
+    [email],
+    (err, results) => {
+      if (err) throw err;
+      res.render('updateStudentForm', {
+        title: 'Edit Student',
+        student: results[0],
+      });
+    }
+  );
+};
+
+exports.updateStudent = (req, res) => {
+  const {
+    first_name: firstName,
+    middle_name: middleName,
+    last_name: lastName,
+    email,
+    contact_number: contactNumber,
+    address,
+  } = req.body;
+
+  db.query(
+    `UPDATE students SET first_name = '${firstName}', middle_name = '${middleName}', last_name = '${lastName}', contact_number = '${contactNumber}', address = '${address}' WHERE email = '${email}'`,
+    (err, results) => {
+      if (err) throw err;
+
+      db.query(`SELECT * FROM students`, (err, results) => {
+        if (err) throw err;
+        res.render('students', { student: results });
+      });
+    }
+  );
+};
