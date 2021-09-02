@@ -40,7 +40,7 @@ router.get('/students', studentController.listOfStudents, (req, res) => {
   }
 });
 
-router.get('/add', studentController.add, (req, res) => {
+router.get('/students/add', authController.isLoggedIn, (req, res) => {
   if (req.user) {
     res.render('addStudent');
   } else {

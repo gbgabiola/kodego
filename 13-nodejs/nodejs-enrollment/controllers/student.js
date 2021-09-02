@@ -16,8 +16,16 @@ db.connect((err) => {
   }
 });
 
+// Export List of students
+exports.listOfStudents = (req, res) => {
+  db.query(`SELECT * FROM students`, (err, results) => {
+    if (err) throw err;
+    res.render('students', { student: results });
+  });
+};
+
 // Export addStudent
-exports.add = (req, res) => {
+exports.addStudent = (req, res) => {
   console.log(req.body);
 
   const {
@@ -72,11 +80,4 @@ exports.add = (req, res) => {
       );
     }
   );
-};
-
-exports.listOfStudents = (req, res) => {
-  db.query(`SELECT * FROM students`, (err, results) => {
-    if (err) throw err;
-    res.render('students', { student: results });
-  });
 };
