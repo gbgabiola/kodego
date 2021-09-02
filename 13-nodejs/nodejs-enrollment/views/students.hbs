@@ -43,8 +43,8 @@
             <td>{{this.email}}</td>
             <td><a href="/student/updateStudentForm/{{this.email}}">Edit</a>
               <a
-                href="/auth/deleteUser/{{this.email}}"
-                onclick="return confirm('Are you sure to delete this user?');"
+                href="/student/deleteStudent/{{this.email}}"
+                onclick="return confirm('Are you sure to delete this student?');"
               >Delete</a></td>
           </tr>
         {{/each}}
