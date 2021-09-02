@@ -1,12 +1,12 @@
 const express = require('express');
 const authController = require('../controllers/auth');
+const studentController = require('../controllers/student');
 
 const router = express.Router();
 
 router.get('/', authController.isLoggedIn, (req, res) => {
   res.render('index', {
     user: req.user,
-    student: req.student,
   });
 });
 
@@ -29,23 +29,20 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
   }
 });
 
-router.get('/students', authController.isLoggedIn, (req, res) => {
+router.get('/students', studentController.listOfStudents, (req, res) => {
   // console.log(req.message);
   if (req.user) {
     res.render('students', {
       user: req.user,
-      student: req.student,
     });
   } else {
     res.redirect('/login');
   }
 });
 
-router.get('/students/add', authController.isLoggedIn, (req, res) => {
+router.get('/add', studentController.add, (req, res) => {
   if (req.user) {
-    res.render('addStudent', {
-      student: req.student,
-    });
+    res.render('addStudent');
   } else {
     res.redirect('/login');
   }

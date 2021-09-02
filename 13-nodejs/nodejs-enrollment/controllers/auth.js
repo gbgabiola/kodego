@@ -112,6 +112,17 @@ exports.login = async (req, res) => {
 
           res.cookie('jwt', token, cookieOptions);
           res.status(200).redirect('/');
+
+          // database.query(`SELECT * FROM students`, (err, results) => {
+          //   if (err) {
+          //     throw err;
+          //   } else {
+          //     res.render('students', {
+          //       // title: 'Enrollees',
+          //       student: results,
+          //     });
+          //   }
+          // });
         }
       }
     );
@@ -135,7 +146,7 @@ exports.isLoggedIn = async (req, res, next) => {
         `SELECT * FROM users WHERE user_id = ?`,
         [decoded.id],
         (err, results) => {
-          // console.log(result);
+          console.log(results);
 
           if (!results) {
             return next();

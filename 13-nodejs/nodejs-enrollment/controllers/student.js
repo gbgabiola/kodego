@@ -30,7 +30,7 @@ exports.add = (req, res) => {
   } = req.body;
 
   db.query(
-    `SELECT * FROM students WHERE email = ?`,
+    `SELECT email FROM students WHERE email = ?`,
     [email],
     (err, results) => {
       if (err) {
@@ -63,12 +63,20 @@ exports.add = (req, res) => {
               message: 'Student Enrolled!',
             });
           }
-          db.query(`SELECT * FROM students`, (err, results) => {
-            if (err) throw err;
-            res.render('students', { student: results });
-          });
+
+          // db.query(`SELECT * FROM students`, (err, results) => {
+          //   if (err) throw err;
+          //   res.render('students', { student: results });
+          // });
         }
       );
     }
   );
+};
+
+exports.listOfStudents = (req, res) => {
+  db.query(`SELECT * FROM students`, (err, results) => {
+    if (err) throw err;
+    res.render('students', { student: results });
+  });
 };

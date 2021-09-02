@@ -35,11 +35,11 @@
           <th>Email</th>
           <th>Action</th>
         </tr>
-        {{#each user}}
+        {{#each student}}
           <tr>
-            <td>{{firstName}}</td>
+            <td>{{this.student_id}}</td>
             <td>{{this.first_name}}</td>
-            <td>{{this.lastName}}</td>
+            <td>{{this.last_name}}</td>
             <td>{{this.email}}</td>
             <td><a href="/auth/updateForm/{{this.email}}">Edit</a>
               <a
